@@ -1,6 +1,4 @@
- **# Getting Started with Node.js: A Teacher's Guide**
-
-**Welcome to the exciting world of Node.js!** In this guide, I'll walk you through the basics of starting a Node.js project and explain the fundamental concepts behind a simple web server. Let's dive in!
+ **# Getting Started with Node.js**
 
 **## Setting Up Your Project**
 
@@ -12,12 +10,10 @@
    ```
 3. **Initialize a Package File:** Run the following command to create a `package.json` file, which will manage your project's dependencies:
    ```bash
-   npm init -y
+   npm init
    ```
 
 **## Understanding the Code**
-
-**Here's a breakdown of the code you provided:**
 
 ```javascript
 const http = require("http");
@@ -73,6 +69,7 @@ app.listen(PORT, () => {
 
 **## Next Steps:**
 
-- **Explore More Features:** Node.js offers a vast array of features and modules. Dive deeper into its capabilities to build more complex and interactive applications.
-- **Consider Frameworks:** Frameworks like Express.js can streamline web development in Node.js by providing structure and additional features.
-- **Keep Learning:** There's always more to discover in the world of Node.js. Stay curious, experiment, and continue your journey of learning!
+- **Install [nodemon](https://www.npmjs.com/package/nodemon):** to auto restart the server whenever you change anything.
+- **Add start script:** In `package.json` add below line in scripts tag
+ ```"start": "nodemon index.js"``` 
+- **Run the project:** Type and enter `npm start` in the terminal to start the project.
