@@ -71,5 +71,7 @@ app.listen(PORT, () => {
 
 - **Install [nodemon](https://www.npmjs.com/package/nodemon):** to auto restart the server whenever you change anything.
 - **Add start script:** In `package.json` add below line in scripts tag
- ```"start": "nodemon index.js"``` 
+ ```
+ "start": "nodemon index.js"
+ ``` 
 - **Run the project:** Type and enter `npm start` in the terminal to start the project.
