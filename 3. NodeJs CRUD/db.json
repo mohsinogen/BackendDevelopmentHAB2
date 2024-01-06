@@ -1,12 +1,1 @@
-[
-    {
-        "id": 1,
-        "name" : "peter parker",
-        "email": "peter@123gmail.com"
-    },
-    {
-        "id": 2,
-        "name" : "bruce banner",
-        "email": "banner@123gmail.com"
-    }
-]
+[{"id":1,"name":"peter parker","email":"peter@123gmail.com"},{"id":2,"name":"bruce banner","email":"banner@123gmail.com"},{"id":3,"name":"test","email":"test@gvgvhv"},{"id":4,"name":"ferfer","email":"test@gmail.com"},{"id":5,"name":"ferfer","email":"test@gmail.com"}]
