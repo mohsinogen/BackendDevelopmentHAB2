@@ -7,11 +7,22 @@ function read() {
     const parsedData = JSON.parse(data);
     return parsedData;
   } catch (err) {
-    console.log("ERRROR", err);
+    throw new Error("Error reading file:", err);
+  }
+}
+
+// Function to write JSON data into a file
+function write(data) {
+  try {
+    const jsonString = JSON.stringify(data);
+    fs.writeFileSync("./db.json", jsonString, 'utf8');
+    return;
+  } catch (err) {
     throw new Error("Error reading file:", err);
   }
 }
 
 module.exports = {
-  read,
-};
+    read,
+    write
+}
