@@ -16,8 +16,8 @@ This Node.js project implements a basic CRUD (Create, Read, Update, Delete) func
 ### Running the Application
 
 1. Open the project directory in the terminal and run `npm install` command to install all the required packages.
-1. Start the server by running `npm start` in the terminal.
-2. The server will start, and you can interact with the API using a tool like Postman..
+2. Start the server by running `npm start` in the terminal.
+3. The server will start, and you can interact with the API using a tool like Postman..
 
 ## Usage
 
