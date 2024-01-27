@@ -4,7 +4,7 @@ import homeRouter from './routes/home.routes.js';
 import cors from 'cors';
 import colors from 'colors'
 import connectDB from './config/db.js';
-import userRouter from './routes/note.routes.js'
+import noteRouter from './routes/note.routes.js'
 import dotenv from 'dotenv'
 
 dotenv.config()
@@ -22,7 +22,7 @@ app.use(cors())
 app.use('/', homeRouter)
 
 // http://localhost:5000/users
-app.use('/notes', userRouter)
+app.use('/notes', noteRouter)
 
 // starting our server
 const PORT=8000

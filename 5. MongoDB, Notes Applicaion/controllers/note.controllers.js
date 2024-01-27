@@ -1,109 +1,149 @@
-import Note from "../models/note.models.js"
-import asyncHandler from "express-async-handler"
+import Note from "../models/note.models.js";
+import asyncHandler from "express-async-handler";
 
+/**
+ * This method creates a note
+ * @method POST
+ * @param {string} title - note's title
+ * @param {string} content - note's content
+ */
+const createNote = asyncHandler(async (req, res) => {
+  try {
+    const { title, content } = req.body;
 
-// @desc This method creates a connection to database
-// @route POST /users
-const createNote = asyncHandler(async (req, res)=>{
-      
-    try {
-        const {title, content} = req.body;
-        
-        if(title && content){
-            const newNote = new Note({
-                title: title,
-                content: content,
-            })
+    if (title && content) {
+      const newNote = new Note({
+        title: title,
+        content: content,
+      });
 
-            const createdNote = await newNote.save()
+      const createdNote = await newNote.save();
 
-            res.json({
-                code: 200,
-                remark:'note created'
-            })
-        }else{
-            res.status(400)
-            res.json({
-                code: 400,
-                remark:"title or content missing"
-            })
-        }
-        
-    } catch (error) {
-        console.log(error);
-        res.status(500)
-        res.json({
-            code: 500,
-            remark:"failed"
-        })
+      res.json({
+        code: 200,
+        remark: "note created",
+      });
+    } else {
+      res.status(400);
+      res.json({
+        code: 400,
+        remark: "title or content missing",
+      });
     }
-})
+  } catch (error) {
+    console.log(error);
+    res.status(500);
+    res.json({
+      code: 500,
+      remark: "failed",
+    });
+  }
+});
 
-const getNotes = asyncHandler(async(req,res)=>{
-    try {
+/**
+ * This method returns note records
+ * @method GET
+ * @query {string} search - note's title (optional)
+ * @query {isArchived} search - if not is archived or not (optional)
+ */
+const getNotes = asyncHandler(async (req, res) => {
+  try {
+    let filterObject = {
+      isArchived:
+        req.query.isArchived === undefined ? false : req.query.isArchived,
+    };
 
-        const filterObject = req.query.search ?{
-            title:{
-                $regex: req.query.search,
-                $options: "i"
-            }
-        }: {};
-
-        const notes = await Note.find(filterObject)
-
-        res.json({
-            code: 200,
-            remark:'success',
-            data: notes
-        })
-    } catch (error) {
-        console.log(error);
-        res.status(500)
-        res.json({
-            code: 500,
-            remark:"failed"
-        })
+    if (req.query.search) {
+      filterObject.title = {
+        $regex: req.query.search,
+        $options: "i",
+      };
     }
-})
 
-const updateNote = asyncHandler(async(req, res)=>{
-    try {
-        
-        const noteId = req.params.noteId;
+    console.log(filterObject);
 
-        const note = await Note.findById(noteId)
+    const notes = await Note.find(filterObject);
 
-        if(note){
-            const {title, content, archivedToggle} = req.body;
+    res.json({
+      code: 200,
+      remark: "success",
+      data: notes,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500);
+    res.json({
+      code: 500,
+      remark: "failed",
+    });
+  }
+});
 
-            note.title = title || note.title; 
-            note.content = content || note.content; 
-            note.isArchived = archivedToggle || note.isArchived; 
+/**
+ * This method updates a note
+ * @method PUT
+ * @param {string} title - note's title (optional)
+ * @param {string} content - note's content (optional)
+ */
+const updateNote = asyncHandler(async (req, res) => {
+  try {
+    const noteId = req.params.noteId;
 
-            await note.save()
+    const note = await Note.findById(noteId);
 
-            res.json({
-                code: 200,
-                remarl:'note updated',
-            })
+    if (note) {
+      const { title, content, archivedToggle } = req.body;
 
-        } else{
-            console.log(error);
-        res.status(404)
-        res.json({
-            code: 404,
-            remark:"Note not found"
-        })
-        }
+      note.title = title || note.title;
+      note.content = content || note.content;
+      note.isArchived = [null, undefined].includes(archivedToggle)
+        ? note.isArchived
+        : archivedToggle;
 
-    } catch (error) {
-        console.log(error);
-        res.status(500)
-        res.json({
-            code: 500,
-            remark:"failed"
-        })
+      await note.save();
+
+      res.json({
+        code: 200,
+        remarl: "note updated",
+      });
+    } else {
+      console.log(error);
+      res.status(404);
+      res.json({
+        code: 404,
+        remark: "Note not found",
+      });
     }
-})
+  } catch (error) {
+    console.log(error);
+    res.status(500);
+    res.json({
+      code: 500,
+      remark: "failed",
+    });
+  }
+});
 
-export {createNote, getNotes, updateNote}
+/**
+ * This method deletes a particular note
+ * @method DELETE
+ */
+const deleteNote = asyncHandler(async (req, res) => {
+  try {
+    const note = await Note.findByIdAndDelete(req.params.noteId);
+
+    res.json({
+      code: 200,
+      remark: "note deleted",
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500);
+    res.json({
+      code: 500,
+      remark: "Something went wrong",
+    });
+  }
+});
+
+export { createNote, getNotes, updateNote, deleteNote };
