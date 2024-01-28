@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import { Button, Card, Col, Form, Modal, Row } from "react-bootstrap";
+import axios from "axios";
+import { BASE_URL } from "../api";
 
-function Note({ data }) {
+function Note({ data, refresh }) {
   const [isEditing, setIsEditing] = useState(false);
 
   const handleEditClose = () => {
@@ -11,24 +13,62 @@ function Note({ data }) {
     setIsEditing(true);
   };
 
-  const noteEditHandler = (e) => {
+  const noteEditHandler = async (e) => {
     e.preventDefault();
+    const { title, note } = e.target.elements;
+
+    try {
+      const response = await axios.put(`${BASE_URL}/notes/${data._id}`, {
+        title: title.value,
+        content: note.value,
+      });
+      setIsEditing(false);
+      refresh()
+    } catch (error) {
+      console.error("Error updating user:", error);
+    }
   };
+
+  const toggleArchived = async (isArchived)=>{
+    try {
+      const response = await axios.put(`${BASE_URL}/notes/${data._id}`, {
+        archivedToggle: isArchived
+      });
+      refresh()
+    } catch (error) {
+      console.error("Error updating user:", error);
+    }
+  }
+
+  const noteDeleteHandler = async ()=>{
+    try {
+      const response = await axios.delete(`${BASE_URL}/notes/${data._id}`)
+      refresh()
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   return (
     <>
       <Card>
         <Card.Header>
           <Row>
-            <Col xs={7}>{data.createdAt}</Col>
+            <Col xs={7}>{new Date(data.createdAt).toLocaleDateString()}</Col>
             <Col xs={5}>
-              <Button className="mx-1" onClick={handleEditShow} variant="primary">
-                <i className="fa-solid fa-pen"  />
+              <Button
+                className="mx-1"
+                onClick={handleEditShow}
+                variant="primary"
+              >
+                <i className="fa-solid fa-pen" />
               </Button>
-              <Button className="mx-1" variant="danger">
+              <Button onClick={noteDeleteHandler} className="mx-1" variant="danger">
                 <i className="fa-solid fa-trash" />
               </Button>
-              <Button className="mx-1" variant="danger">
+              <Button onClick={()=>{
+                toggleArchived(!data.isArchived)
+              }} className="mx-1" variant="danger">
                 <i
                   className={
                     data.isArchived

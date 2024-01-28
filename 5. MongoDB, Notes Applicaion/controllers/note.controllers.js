@@ -48,19 +48,17 @@ const createNote = asyncHandler(async (req, res) => {
  */
 const getNotes = asyncHandler(async (req, res) => {
   try {
-    let filterObject = {
-      isArchived:
-        req.query.isArchived === undefined ? false : req.query.isArchived,
-    };
 
-    if (req.query.search) {
-      filterObject.title = {
-        $regex: req.query.search,
-        $options: "i",
-      };
+    let filterObject = {
+      isArchived: req.query.isArchived === undefined ? false: req.query.isArchived
     }
 
-    console.log(filterObject);
+    if(req.query.search){
+      filterObject.title = {
+        $regex: req.query.search,
+        $options: "i"
+      }
+    }
 
     const notes = await Note.find(filterObject);
 
@@ -96,9 +94,7 @@ const updateNote = asyncHandler(async (req, res) => {
 
       note.title = title || note.title;
       note.content = content || note.content;
-      note.isArchived = [null, undefined].includes(archivedToggle)
-        ? note.isArchived
-        : archivedToggle;
+      note.isArchived = archivedToggle === undefined ? note.isArchived : archivedToggle;
 
       await note.save();
 

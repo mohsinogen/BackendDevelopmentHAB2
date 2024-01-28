@@ -17,6 +17,7 @@ import { BASE_URL } from "./api";
 import axios from "axios"
 
 function App() {
+
   const [notes, setNotes] = useState([]);
  
   const [search, setSearch] = useState('')
@@ -31,8 +32,9 @@ function App() {
 
   const fetchNotes=async()=>{
     try {
-      const response = await axios.get(`${BASE_URL}/notes?search=${search}`);
+      const response = await axios.get(`${BASE_URL}/notes?search=${search}&isArchived=${radioValue=='all'?false: true}`);
       setNotes(response.data.data);
+      console.log(response.data);
     } catch (error) {
       console.error("Error fetching users:", error);
     }
@@ -40,7 +42,7 @@ function App() {
 
   useEffect(()=>{
     fetchNotes()
-  },[search])
+  },[search, radioValue])
 
   return (
     <div>
@@ -70,7 +72,9 @@ function App() {
         {notes.length>0 && (<Row>
           {notes.map((item, index) => (
             <Col className="m-2" sm={12} md={5} key={index}>
-              <Note noteSr={index + 1} data={item} />
+              <Note noteSr={index + 1} data={item} refresh={()=>{
+                fetchNotes()
+              }} />
             </Col>
           ))}
         </Row>)}
