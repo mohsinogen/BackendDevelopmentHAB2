@@ -21,55 +21,55 @@
 
 ### c. Create a MongoDb Cluster on Atlas
 1. Go to MongoDB website https://www.mongodb.com/
-<img src="https://github.com/mohsinogen/BackendDevelopmentHAB2/blob/main/media/Screenshot%202024-01-30%20at%2011.36.42%20AM.png?raw=true" alt="step 1">
+<img src="https://github.com/mohsinogen/BackendDevelopmentHAB2/blob/main/media/step-1.png?raw=true" alt="step 1">
 <br />
 2. Signup if new login if already have an account
-<img src="https://github.com/mohsinogen/BackendDevelopmentHAB2/blob/main/media/Screenshot%202024-01-30%20at%2011.37.02%20AM.png?raw=true" alt="step 2">
+<img src="https://github.com/mohsinogen/BackendDevelopmentHAB2/blob/main/media/step-2.png?raw=true" alt="step 2">
 <br />
 3. Accept terms and continue
-<img src="https://github.com/mohsinogen/BackendDevelopmentHAB2/blob/main/media/Screenshot%202024-01-30%20at%2011.37.25%20AM.png?raw=true" alt="step 2">
+<img src="https://github.com/mohsinogen/BackendDevelopmentHAB2/blob/main/media/step-3.png?raw=true" alt="step 3">
 <br />
 4. Fill this survey form and submit
-<img src="https://github.com/mohsinogen/BackendDevelopmentHAB2/blob/main/media/Screenshot%202024-01-30%20at%2011.38.31%20AM.png?raw=true" alt="step 2">
+<img src="https://github.com/mohsinogen/BackendDevelopmentHAB2/blob/main/media/step-4.png?raw=true" alt="step 4">
 <br />
 5. Here select free plan M0
-<img src="https://github.com/mohsinogen/BackendDevelopmentHAB2/blob/main/media/Screenshot%202024-01-30%20at%2011.38.48%20AM.png?raw=true" alt="step 2">
+<img src="https://github.com/mohsinogen/BackendDevelopmentHAB2/blob/main/media/step-5.png?raw=true" alt="step 5">
 <br />
 6. Select aws as provide, select mumbai region and give your cluster a name and create it, it will take 10 to 15 minutes in creating a cluster.
-<img src="https://github.com/mohsinogen/BackendDevelopmentHAB2/blob/main/media/Screenshot%202024-01-30%20at%2011.39.15%20AM.png?raw=true" alt="step 2">
+<img src="https://github.com/mohsinogen/BackendDevelopmentHAB2/blob/main/media/step-6.png?raw=true" alt="step 6">
 <br />
 7. On sidemenu of dashboard click on Database option.
-<img src="https://github.com/mohsinogen/BackendDevelopmentHAB2/blob/main/media/Screenshot%202024-01-30%20at%2011.40.13%20AM.png?raw=true" alt="step 2">
+<img src="https://github.com/mohsinogen/BackendDevelopmentHAB2/blob/main/media/step-7.png?raw=true" alt="step 7">
 <br />
 8. On this page you will see the cluster you had created, click on browse collections.
-<img src="https://github.com/mohsinogen/BackendDevelopmentHAB2/blob/main/media/Screenshot%202024-01-30%20at%203.31.04%20PM.png?raw=true" alt="step 2">
+<img src="https://github.com/mohsinogen/BackendDevelopmentHAB2/blob/main/media/step-8.png?raw=true" alt="step 8">
 <br />
 9. It will show you your all database if not click on Add My Own Data to create database.
-<img src="https://github.com/mohsinogen/BackendDevelopmentHAB2/blob/main/media/Screenshot%202024-01-30%20at%203.31.19%20PM.png?raw=true" alt="step 2">
+<img src="https://github.com/mohsinogen/BackendDevelopmentHAB2/blob/main/media/step-9.png?raw=true" alt="step 9">
 <br />
 10. On this modal create your database by giving it a name and also provide it a collection name which will be inside it and then click create button.
-<img src="https://github.com/mohsinogen/BackendDevelopmentHAB2/blob/main/media/Screenshot%202024-01-30%20at%203.31.42%20PM.png?raw=true" alt="step 2">
+<img src="https://github.com/mohsinogen/BackendDevelopmentHAB2/blob/main/media/step-10.png?raw=true" alt="step 10">
 <br />
 11. You can see here the database you had created.
-<img src="https://github.com/mohsinogen/BackendDevelopmentHAB2/blob/main/media/Screenshot%202024-01-30%20at%203.31.54%20PM.png?raw=true" alt="step 2">
+<img src="https://github.com/mohsinogen/BackendDevelopmentHAB2/blob/main/media/step-11.png?raw=true" alt="step 11">
 <br />
 12. On sidemenu click on database access option, this page will show you all the users you had created if not add a new user.
-<img src="https://github.com/mohsinogen/BackendDevelopmentHAB2/blob/main/media/Screenshot%202024-01-30%20at%203.32.31%20PM.png?raw=true" alt="step 2">
+<img src="https://github.com/mohsinogen/BackendDevelopmentHAB2/blob/main/media/step-12.png?raw=true" alt="step 12">
 <br />
 13. In the create user modal select password as authentication method, enter userid and password.
-<img src="https://github.com/mohsinogen/BackendDevelopmentHAB2/blob/main/media/Screenshot%202024-01-30%20at%203.32.55%20PM.png?raw=true" alt="step 2">
+<img src="https://github.com/mohsinogen/BackendDevelopmentHAB2/blob/main/media/step-13.png?raw=true" alt="step 13">
 <br />
 14. In roles select read and write to any database and create the user.
-<img src="https://github.com/mohsinogen/BackendDevelopmentHAB2/blob/main/media/Screenshot%202024-01-30%20at%203.33.07%20PM.png?raw=true" alt="step 2">
+<img src="https://github.com/mohsinogen/BackendDevelopmentHAB2/blob/main/media/step-14.png?raw=true" alt="step 14">
 <br />
 15. Again in sidemnu click on database and on cluster click connect button and on the below modal select allow from anywhere option.
-<img src="https://github.com/mohsinogen/BackendDevelopmentHAB2/blob/main/media/Screenshot%202024-01-30%20at%203.33.31%20PM.png?raw=true" alt="step 2">
+<img src="https://github.com/mohsinogen/BackendDevelopmentHAB2/blob/main/media/step-15.png?raw=true" alt="step 15">
 <br />
 16. On below sreen select drivers option.
-<img src="https://github.com/mohsinogen/BackendDevelopmentHAB2/blob/main/media/Screenshot%202024-01-30%20at%203.33.57%20PM.png?raw=true" alt="step 2">
+<img src="https://github.com/mohsinogen/BackendDevelopmentHAB2/blob/main/media/step-16.png?raw=true" alt="step 16">
 <br />
 17. From here copy the MongoURI of your cluster and save it somewhere.
-<img src="https://github.com/mohsinogen/BackendDevelopmentHAB2/blob/main/media/Screenshot%202024-01-30%20at%203.34.04%20PM.png?raw=true" alt="step 2">
+<img src="https://github.com/mohsinogen/BackendDevelopmentHAB2/blob/main/media/step-17.png?raw=true" alt="step 17">
 <br />
 
 
