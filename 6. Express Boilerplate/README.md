@@ -75,13 +75,20 @@
 
 ### d. Installing mongoose and connecting with our MongoDB Atlas cluster
 1. Open terminal in project directoy and install mongoose package by running this command `npm install mongoose`
-2. Add your MongoUri copied from MongoDb Atlas in `.env` file. 
+2. Add your MongoUri copied from MongoDb Atlas in `.env` file, and add blow code 
+```
+DATABASE_USER=<Your MongoDb database user>
+DATABASE_PASSWORD=<Your MongoDb database user's password>
+DATABASE_NAME=<Your MongoDb database name>
+```
 3. In the config folder of your project create `db.js` file and create a function to connect MongoDB like below
    ```javascript
    import mongoose from "mongoose";
    const connectDB = async () => {
     try {
-      const conn = await mongoose.connect(process.env.MONGO_URI);
+      const conn = await mongoose.connect(
+      `mongodb+srv://${process.env.DATABASE_USER}:${process.env.DATABASE_PASSWORD}@mohsinogen.smovl.mongodb.net/${process.env.DATABASE_NAME}?retryWrites=true&w=majority`
+    );
       console.log(`MongoDB Connected: ${conn.connection.host}`.blue.underline);
     } catch (error) {
       console.error(`Error: ${error}`.red.underline);
@@ -91,5 +98,5 @@
 
    export default connectDB;
    ```
-  4. Call this `connectDB` function inside your index.js file and you will be connected with your database.
-  5. Create `/models` folder to store your MongoDB mongoose models and schema.
+4. Call this `connectDB` function inside your index.js file and you will be connected with your database.
+5. Create `/models` folder to store your MongoDB mongoose models and schema.
