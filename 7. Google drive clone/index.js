@@ -14,7 +14,10 @@ connectDB();
 
 const app = express();
 
+
+
 // middlewares
+app.use(cors())
 app.use(express.json());
 
 // routes
@@ -22,7 +25,7 @@ app.use("/", homeRouter);
 app.use("/files", fileRouter)
 
 // serving static files
-app.use("/uploaded/files", express.static("myFiles"))
+app.use("/media", express.static("myFiles"))
 
 // error middlewares
 app.use(notFound)
