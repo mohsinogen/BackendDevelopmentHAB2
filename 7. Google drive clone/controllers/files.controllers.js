@@ -72,9 +72,9 @@ const deleteFile = asyncHandler(async (req, res)=>{
 
         const file = await File.findById(req.params.fileId);
 
-        await File.findByIdAndDelete(req.params.fileId)
+       await File.findByIdAndDelete(req.params.fileId)
         
-        //fs.unlinkSync(file.path)
+       fs.unlinkSync(file.localPath)
 
         res.json({
           code: 200,
